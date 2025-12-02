@@ -160,6 +160,7 @@
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            overflow: visible;
         }
 
         .nav-wrapper {
@@ -171,6 +172,7 @@
             align-items: center;
             height: 80px;
             position: relative;
+            overflow: visible;
         }
 
         .logo {
@@ -186,6 +188,7 @@
             left: 40px;
             top: 50%;
             transform: translateY(-50%);
+            z-index: 1002;
         }
 
         .logo:hover {
@@ -239,6 +242,14 @@
         .nav-cta {
             position: absolute;
             right: 40px;
+        }
+
+        .nav-cta-mobile {
+            display: none;
+        }
+
+        .nav-cta-desktop {
+            display: inline-block;
         }
 
         /* --- HERO SECTION --- */
@@ -913,7 +924,6 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 1.1rem; }
-            .nav-links { display: none; }
             .demo-section { flex-direction: column; gap: 40px; }
             .arch-diagram { flex-direction: column; }
             .connector-line { width: 2px; height: 40px; }
@@ -941,49 +951,83 @@
         }
 
         /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
+        @media (max-width: 968px) {
+            /* Navigation */
+            .logo {
+                cursor: pointer;
+                transition: all 0.3s ease;
             }
 
-            /* Navigation */
-            header {
-                height: auto;
+            .logo:active {
+                transform: translateY(-50%) scale(0.95);
             }
 
             .nav-wrapper {
-                flex-direction: column;
-                padding: 15px 20px;
-                height: auto;
-                gap: 15px;
+                padding: 0;
+                height: 80px;
             }
 
             .logo {
-                position: relative;
-                left: 0;
-                transform: none;
-                margin-bottom: 10px;
-            }
-
-            .logo:hover {
-                transform: scale(1.05);
+                left: 20px;
             }
 
             .logo-img {
-                height: 50px;
+                height: 55px;
             }
 
             .nav-links {
-                flex-wrap: wrap;
-                gap: 15px;
-                justify-content: center;
-                font-size: 0.85rem;
+                display: flex;
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 40px 20px;
+                gap: 30px;
+                transition: left 0.3s ease;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                z-index: 1001;
             }
 
-            .nav-cta {
-                position: relative;
-                right: 0;
-                margin-top: 10px;
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 15px;
+            }
+
+            .nav-cta-desktop {
+                display: none;
+            }
+
+            .nav-cta-mobile {
+                display: block;
+                margin-top: 20px;
+            }
+
+            .nav-cta-mobile .btn {
+                width: 90%;
+                max-width: 300px;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
             }
 
             /* Hero Section */
@@ -1171,6 +1215,14 @@
         }
 
         @media (max-width: 480px) {
+            .logo {
+                left: 15px;
+            }
+
+            .logo-img {
+                height: 45px;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -1209,16 +1261,17 @@
     <!-- NAVIGATION -->
     <header>
         <div class="nav-wrapper">
-            <a href="#" class="logo">
+            <a href="#" class="logo" id="logoToggle">
                 <img src="modexia logo.png" alt="Modexia Logo" class="logo-img">
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#platform">Platform</a></li>
                 <li><a href="#governance">Governance</a></li>
                 <li><a href="#solutions">Solutions</a></li>
                 <li><a href="#investors">Investors</a></li>
+                <li class="nav-cta-mobile"><a href="#contact" class="btn btn-primary">Get Access</a></li>
             </ul>
-            <a href="#contact" class="btn btn-primary nav-cta">Get Access</a>
+            <a href="#contact" class="btn btn-primary nav-cta nav-cta-desktop">Get Access</a>
         </div>
     </header>
 
@@ -1489,6 +1542,24 @@
 
     <!-- SCROLL ANIMATIONS -->
     <script>
+        // Logo toggle for mobile menu
+        const logoToggle = document.getElementById('logoToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        logoToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 968) {
+                e.preventDefault();
+                navLinks.classList.toggle('active');
+            }
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Create particles
         function createParticles() {
             const particlesBg = document.getElementById('particlesBg');
