@@ -40,6 +40,20 @@
             position: relative;
         }
 
+        /* Background Video Styles */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+            object-fit: cover;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -53,6 +67,7 @@
                 radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.05) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
+            background-color: rgba(10, 14, 39, 0.7);
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -1251,6 +1266,12 @@
     </style>
 </head>
 <body>
+
+    <!-- BACKGROUND VIDEO -->
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="vecteezy_data-neural-network-ai-technology-cloud-computing-bits_21723042.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <!-- SCROLL PROGRESS BAR -->
     <div class="scroll-progress" id="scrollProgress"></div>
