@@ -430,12 +430,98 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
             .pricing-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                padding: 0 10px;
+            }
+
+            .pricing-hero p {
+                font-size: 1rem;
+                padding: 0 10px;
             }
 
             .pricing-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            /* Mobile responsive for pricing model explanation */
+            div[style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2px !important;
+            }
+
+            div[style*="display: grid"][style*="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+
+            /* Adjust button sizes on mobile */
+            .btn {
+                padding: 14px 30px !important;
+                font-size: 0.95rem !important;
+                width: 100%;
+                max-width: 300px;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+
+            /* Adjust padding for content sections */
+            div[style*="padding: 50px 40px"] {
+                padding: 30px 20px !important;
+            }
+
+            div[style*="font-size: 2.5rem"] {
+                font-size: 1.8rem !important;
+            }
+
+            div[style*="font-size: 2rem"] {
+                font-size: 1.5rem !important;
+            }
+
+            div[style*="font-size: 3rem"] {
+                font-size: 2rem !important;
+            }
+
+            div[style*="font-size: 1.8rem"] {
+                font-size: 1.4rem !important;
+            }
+
+            /* FAQ section */
+            .faq-grid {
+                gap: 15px;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 18px 20px;
+            }
+
+            .faq-answer {
+                padding: 20px;
+                font-size: 0.95rem;
+            }
+
+            /* Adjust flex containers for mobile */
+            div[style*="display: flex"][style*="gap: 30px"] {
+                flex-direction: column !important;
+                gap: 15px !important;
+                align-items: center !important;
+            }
+
+            div[style*="display: flex"][style*="gap: 30px"] span {
+                display: block;
+                text-align: center;
+            }
+
+            div[style*="display: flex"][style*="gap: 30px"] div[style*="width: 2px"] {
+                display: none !important;
             }
         }
 
@@ -491,7 +577,7 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 0 15px;
+                padding: 0 20px;
             }
 
             .logo-img {
@@ -500,7 +586,12 @@
             }
 
             .nav-wrapper {
-                padding: 0 15px;
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .pricing-section {
+                padding: 40px 0;
             }
         }
 
@@ -713,7 +804,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container" style="text-align: center;">
-            <img src="modylogo.png" alt="Modexia Logo" style="height: 30px; width: auto; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4));">
+            <img src="modylogo.png" alt="Modexia Logo" style="height: 7vw; max-height: 130px; min-height: 60px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.5)); transition: all 0.3s ease;" onmouseover="this.style.filter='drop-shadow(0 0 25px rgba(14, 165, 233, 0.8))'" onmouseout="this.style.filter='drop-shadow(0 0 15px rgba(14, 165, 233, 0.5))'">
             <p style="margin: 0;">&copy; 2026 Modexia. All rights reserved.</p>
         </div>
     </footer>

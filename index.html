@@ -472,6 +472,12 @@
             flex-wrap: wrap;
             align-items: center;
             margin-top: 10px;
+            justify-content: flex-start;
+        }
+
+        .hero-buttons .btn {
+            flex: 0 1 auto;
+            min-width: 140px;
         }
 
         /* --- TRUST BADGES --- */
@@ -1399,8 +1405,8 @@
             }
 
             .nav-wrapper {
-                padding: 0;
-                height: 80px;
+                padding: 0 20px;
+                height: 70px;
             }
 
             .logo {
@@ -1458,8 +1464,12 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
             .container {
-                padding: 0 15px;
+                padding: 0 20px;
             }
 
             /* Hero Section */
@@ -1484,18 +1494,20 @@
 
             .hero-buttons {
                 display: flex;
-                flex-direction: column;
-                gap: 15px;
+                flex-direction: row;
+                gap: 12px;
                 width: 100%;
-                align-items: stretch;
+                justify-content: center;
+                flex-wrap: wrap;
             }
 
             .hero-buttons .btn {
-                width: 100%;
-                max-width: 100%;
+                flex: 1;
+                min-width: 140px;
+                max-width: 180px;
                 text-align: center;
-                padding: 16px 24px;
-                font-size: 1rem;
+                padding: 14px 20px;
+                font-size: 0.9rem;
             }
 
             /* Sections */
@@ -1591,11 +1603,15 @@
             }
 
             .ui-buttons {
-                flex-direction: column;
+                flex-direction: row;
+                gap: 10px;
             }
 
             .ui-btn {
-                width: 100%;
+                flex: 1;
+                min-width: 100px;
+                font-size: 0.85rem;
+                padding: 10px;
             }
 
             /* Security Section */
@@ -1699,6 +1715,22 @@
             .nav-links {
                 font-size: 0.8rem;
                 gap: 10px;
+            }
+
+            /* Keep CTA buttons side by side on small screens */
+            .section-padding div[style*="display: flex"] .btn {
+                padding: 14px 24px !important;
+                font-size: 0.85rem !important;
+                flex: 1;
+                min-width: 120px;
+                max-width: 160px;
+            }
+
+            /* Adjust hero buttons for very small screens */
+            .hero-buttons .btn {
+                padding: 12px 16px;
+                font-size: 0.85rem;
+                min-width: 120px;
             }
         }
     </style>
@@ -1882,9 +1914,9 @@
             <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;">
                 Let your AI agents work independently while you stay in control. Simple setup, transparent pricing, no surprises.
             </p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="#contact" class="btn btn-primary" style="padding: 18px 48px; font-size: 1.1rem;">Get Started Free</a>
-                <a href="#contact" class="btn btn-outline" style="padding: 18px 48px; font-size: 1.1rem;">Talk to Us</a>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#contact" class="btn btn-primary" style="padding: 18px 36px; font-size: 1rem;">Get Started Free</a>
+                <a href="#contact" class="btn btn-outline" style="padding: 18px 36px; font-size: 1rem;">Talk to Us</a>
             </div>
         </div>
     </section>
@@ -1923,7 +1955,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <img src="modylogo.png" alt="Modexia Logo" style="height: 30px; width: auto; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4));">
+                <img src="modylogo.png" alt="Modexia Logo" style="height: 7vw; max-height: 130px; min-height: 60px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.5)); transition: all 0.3s ease;" onmouseover="this.style.filter='drop-shadow(0 0 25px rgba(14, 165, 233, 0.8))'" onmouseout="this.style.filter='drop-shadow(0 0 15px rgba(14, 165, 233, 0.5))'">
                 <p style="margin: 0;">© 2026 Modexia. All Rights Reserved. • <a href="#" style="color: #64748b; text-decoration: underline;">Privacy</a> • <a href="#" style="color: #64748b; text-decoration: underline;">Terms</a></p>
             </div>
         </div>

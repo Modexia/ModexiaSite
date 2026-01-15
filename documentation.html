@@ -501,8 +501,12 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
             .container {
-                padding: 0 15px;
+                padding: 0 20px;
             }
 
             .logo-img {
@@ -511,15 +515,85 @@
             }
 
             .nav-wrapper {
-                padding: 0 15px;
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .docs-hero {
+                padding: 140px 0 80px;
             }
 
             .docs-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                padding: 0 10px;
+            }
+
+            .docs-hero p {
+                font-size: 1rem;
+                padding: 0 10px;
             }
 
             .doc-section h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .doc-section h3 {
+                font-size: 1.4rem;
+            }
+
+            .doc-section h4 {
+                font-size: 1.2rem;
+            }
+
+            .doc-section p,
+            .doc-section li {
+                font-size: 0.95rem;
+            }
+
+            .code-block {
+                padding: 15px;
+                font-size: 0.85rem;
+                overflow-x: auto;
+            }
+
+            .docs-content {
+                padding: 30px 20px;
+            }
+
+            .param-table {
+                font-size: 0.85rem;
+            }
+
+            .param-table td,
+            .param-table th {
+                padding: 10px;
+            }
+
+            /* Adjust buttons */
+            .btn {
+                padding: 14px 30px !important;
+                font-size: 0.95rem !important;
+                width: 100%;
+                max-width: 300px;
+                display: block !important;
+                margin: 20px auto !important;
+            }
+
+            /* Make tables responsive */
+            .param-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Sidebar adjustments for mobile */
+            .docs-sidebar {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            .sidebar-section {
+                margin-bottom: 20px;
             }
         }
 
@@ -530,6 +604,31 @@
 
             .nav-links a {
                 font-size: 1rem;
+            }
+
+            .docs-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .docs-hero p {
+                font-size: 0.95rem;
+            }
+
+            .doc-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .doc-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .code-block {
+                font-size: 0.8rem;
+                padding: 12px;
+            }
+
+            .docs-content {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -915,7 +1014,7 @@ console.log(data);</code></pre>
     <!-- FOOTER -->
     <footer>
         <div class="container" style="text-align: center;">
-            <img src="modylogo.png" alt="Modexia Logo" style="height: 30px; width: auto; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4));">
+            <img src="modylogo.png" alt="Modexia Logo" style="height: 7vw; max-height: 130px; min-height: 60px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.5)); transition: all 0.3s ease;" onmouseover="this.style.filter='drop-shadow(0 0 25px rgba(14, 165, 233, 0.8))'" onmouseout="this.style.filter='drop-shadow(0 0 15px rgba(14, 165, 233, 0.5))'">
             <p style="margin: 0;">&copy; 2026 Modexia. All rights reserved.</p>
         </div>
     </footer>
