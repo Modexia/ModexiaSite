@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Modexia - Pay Per Request</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="modylogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="modylogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="modylogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary: #0a0e27;
+            --accent: #0ea5e9;
+            --accent-glow: #38bdf8;
+            --accent-secondary: #0284c7;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --card-bg: #1e293b;
+            --dark-bg: #020617;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary) 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            color: white;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.6);
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+            overflow: visible;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(10, 14, 39, 0.95);
+            border-bottom-color: rgba(14, 165, 233, 0.5);
+        }
+
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Rajdhani', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1002;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            height: 7vw;
+            max-height: 130px;
+            min-height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.5));
+        }
+
+        .logo:hover .logo-img {
+            filter: drop-shadow(0 0 25px rgba(14, 165, 233, 0.8));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 600;
+            position: relative;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(56, 189, 248, 0.1));
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-glow);
+        }
+
+        /* --- PRICING HERO --- */
+        .pricing-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            font-family: 'Rajdhani', sans-serif;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- PRICING CARDS --- */
+        .pricing-section {
+            padding: 60px 0 120px;
+        }
+
+        .pricing-toggle {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .toggle-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 8px;
+            border-radius: 50px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .toggle-option {
+            padding: 12px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-option.active {
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 50px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.2);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Rajdhani', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            min-height: 60px;
+        }
+
+        .plan-features {
+            margin: 30px 0;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-gray);
+        }
+
+        .plan-features li i {
+            color: var(--success);
+            font-size: 1.1rem;
+        }
+
+        .plan-features li.disabled {
+            opacity: 0.4;
+        }
+
+        .plan-features li.disabled i {
+            color: var(--text-gray);
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq-section {
+            padding: 80px 0;
+            background: rgba(10, 14, 39, 0.5);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Rajdhani', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-gray);
+            margin-top: 15px;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 40px 0;
+            border-top: 1px solid rgba(14, 165, 233, 0.3);
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 968px) {
+            .logo {
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .logo:active {
+                transform: scale(0.95);
+            }
+
+            .nav-wrapper {
+                padding: 0 20px;
+                height: 80px;
+            }
+
+            .nav-links {
+                display: flex;
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 40px 20px;
+                gap: 30px;
+                transition: left 0.3s ease;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo-img {
+                height: 50px;
+                min-height: 40px;
+            }
+
+            .nav-wrapper {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img {
+                height: 40px;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <header id="mainHeader">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo" id="logoToggle">
+                <img src="modylogo.png" alt="Modexia Logo" class="logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#platform">Platform</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- PRICING HERO -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Pay Per Request. That's It.</h1>
+            <p>Provider cost + 5% platform fee. No subscriptions, no hidden charges, no surprises.</p>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing-section">
+        <div class="container">
+            <!-- PRICING MODEL EXPLANATION -->
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 60px; padding: 50px 40px; background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(56, 189, 248, 0.1)); border-radius: 24px; border: 1px solid rgba(14, 165, 233, 0.3);">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 25px; color: var(--accent); font-family: 'Rajdhani', sans-serif; font-weight: 800;">How It Works</h2>
+                    <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.9; margin-bottom: 40px;">
+                        GPT-4 costs $0.10? You pay $0.105. Claude costs $0.50? You pay $0.525. Simple math, no surprises.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(14, 165, 233, 0.3); border-radius: 12px; overflow: hidden; margin-bottom: 30px;">
+                        <div style="background: rgba(30, 41, 59, 0.8); padding: 25px 20px; text-align: center;">
+                            <div style="font-size: 1.8rem; color: var(--accent); margin-bottom: 8px; font-weight: 700;">Provider Cost</div>
+                            <div style="color: var(--text-gray); font-size: 0.95rem;">What the AI model costs</div>
+                        </div>
+                        <div style="background: rgba(30, 41, 59, 0.8); padding: 25px 20px; text-align: center;">
+                            <div style="font-size: 1.8rem; color: var(--accent-glow); margin-bottom: 8px; font-weight: 700;">+ 5%</div>
+                            <div style="color: var(--text-gray); font-size: 0.95rem;">Our platform fee</div>
+                        </div>
+                        <div style="background: rgba(30, 41, 59, 0.8); padding: 25px 20px; text-align: center;">
+                            <div style="font-size: 1.8rem; color: var(--success); margin-bottom: 8px; font-weight: 700;">Total</div>
+                            <div style="color: var(--text-gray); font-size: 0.95rem;">What you pay</div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(10, 14, 39, 0.6); padding: 25px 30px; border-radius: 12px; border-left: 4px solid var(--accent); text-align: left;">
+                        <p style="color: var(--text-gray); font-size: 1rem; margin: 0; line-height: 1.8;">
+                            <strong style="color: var(--accent-glow);">Example:</strong> An API call to GPT-4 costs $0.10 from OpenAI. You pay $0.10 + (5% × $0.10) = <strong style="color: var(--accent);">$0.105</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; padding: 50px 40px; background: rgba(30, 41, 59, 0.4); border-radius: 24px; border: 2px solid rgba(14, 165, 233, 0.3);">
+                    <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--accent-glow); font-family: 'Rajdhani', sans-serif; font-weight: 800; text-align: center;">Getting Started</h3>
+                    <p style="text-align: center; color: var(--text-gray); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8;">
+                        No crypto knowledge needed. Just use your credit card.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--accent); margin-bottom: 15px; font-weight: 700;">1</div>
+                            <div style="font-weight: 700; color: var(--text-light); margin-bottom: 10px; font-size: 1.1rem;">Add Card</div>
+                            <div style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">Credit or debit, same as any online purchase</div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--accent-glow); margin-bottom: 15px; font-weight: 700;">2</div>
+                            <div style="font-weight: 700; color: var(--text-light); margin-bottom: 10px; font-size: 1.1rem;">We Convert to USDC</div>
+                            <div style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">Automatic conversion handled behind the scenes</div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--success); margin-bottom: 15px; font-weight: 700;">3</div>
+                            <div style="font-weight: 700; color: var(--text-light); margin-bottom: 10px; font-size: 1.1rem;">Make API Calls</div>
+                            <div style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">Instant access to 100+ AI models</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; padding: 30px; background: rgba(14, 165, 233, 0.1); border-radius: 16px;">
+                        <p style="color: var(--text-gray); font-size: 1rem; margin-bottom: 15px;">
+                            Built on secure infrastructure you can trust
+                        </p>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                            <span style="color: var(--accent-glow); font-weight: 600;">Circle USDC</span>
+                            <div style="width: 2px; height: 20px; background: rgba(14, 165, 233, 0.3);"></div>
+                            <span style="color: var(--accent-glow); font-weight: 600;">Arc Network</span>
+                            <div style="width: 2px; height: 20px; background: rgba(14, 165, 233, 0.3);"></div>
+                            <span style="color: var(--accent-glow); font-weight: 600;">Bank-Level Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 50px; text-align: center;">
+                    <a href="platform.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 50px;">Start with 10 Free Calls</a>
+                    <p style="color: var(--text-gray); margin-top: 15px; font-size: 0.95rem;">Credit card required to unlock free calls</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does Modexia pricing work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We add 5% to whatever the AI provider charges. That's it. If OpenAI charges $0.10 for a call, you pay $0.105 total. Everything is shown upfront before each request.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I pay for Modexia services?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Just add your credit card. We handle the crypto conversion behind the scenes. No wallets to manage, no blockchain knowledge needed.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I set budget limits?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. Set daily or monthly spending caps. Get alerts when you're close to your limit. Your agents can't exceed what you set.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are there any hidden fees?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        No. You see the exact cost before every API call. Provider cost + 5%. No subscriptions, no minimums, no surprise charges.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's included in the 5% platform fee?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Access to 100+ AI models through one API, automatic budget controls, cost tracking, fraud detection, and full transaction history. Everything you need in one platform.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need to understand cryptocurrency or blockchain?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        No. Use your credit card like any online purchase. We handle all the crypto stuff automatically in the background.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is there a free trial?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Add your credit card and get 10 free API calls to test the platform. You won't be charged until you use more than the free calls.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer volume discounts?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. Higher usage gets better rates automatically. Contact us for enterprise pricing.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container" style="text-align: center;">
+            <img src="modylogo.png" alt="Modexia Logo" style="height: 30px; width: auto; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4));">
+            <p style="margin: 0;">&copy; 2026 Modexia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Logo toggle for mobile menu
+        const logoToggle = document.getElementById('logoToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        logoToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 968) {
+                e.preventDefault();
+                navLinks.classList.toggle('active');
+            }
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

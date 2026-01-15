@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="facebook-domain-verification" content="iw7zkfb1nxp77ax3hwu0qrql2sd395" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modexia | AI Business Orchestration Platform</title>
-    <link rel="icon" type="image/png" href="icon.png">
+    <title>Modexia | Autonomous AI API Access with USDC Payments</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="modylogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="modylogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="modylogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -41,6 +43,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            font-size: 0.4rem;
         }
 
         body::before {
@@ -96,7 +99,7 @@
 
         .btn {
             display: inline-block;
-            padding: 16px 40px;
+            padding: 16px 36px;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
@@ -104,6 +107,7 @@
             border: none;
             font-size: 1rem;
             letter-spacing: 0.3px;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -112,6 +116,7 @@
             box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
         }
 
         .btn-primary::before {
@@ -171,10 +176,7 @@
         .section-padding { padding: 140px 0; }
 
         .text-gradient {
-            background: linear-gradient(135deg, var(--accent), var(--accent-glow), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent-glow);
         }
 
         .accent-text { color: var(--accent); }
@@ -204,7 +206,7 @@
             margin: 0 auto;
             padding: 0 40px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             height: 80px;
             position: relative;
@@ -220,19 +222,18 @@
             gap: 15px;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            position: absolute;
-            left: 40px;
-            top: 50%;
-            transform: translateY(-50%);
+            position: relative;
             z-index: 1002;
         }
 
         .logo:hover {
-            transform: translateY(-50%) scale(1.05);
+            transform: scale(1.05);
         }
 
         .logo-img {
-            height: 75px;
+            height: 7vw;
+            max-height: 130px;
+            min-height: 60px;
             width: auto;
             transition: all 0.3s ease;
             filter: drop-shadow(0 0 15px rgba(14, 165, 233, 0.5));
@@ -249,7 +250,7 @@
 
         .nav-links {
             display: flex;
-            gap: 45px;
+            gap: 30px;
             align-items: center;
         }
 
@@ -425,9 +426,9 @@
         }
 
         .hero h1 {
-            font-size: 4.8rem;
-            line-height: 1.05;
-            margin-bottom: 35px;
+            font-size: clamp(2.5rem, 5vw, 5.5rem);
+            line-height: 1.2;
+            margin-bottom: 30px;
             font-weight: 800;
             font-family: 'Rajdhani', sans-serif;
             text-shadow: 0 2px 40px rgba(14, 165, 233, 0.3);
@@ -435,15 +436,17 @@
         }
 
         .hero h1 .text-gradient {
-            text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+            display: inline-block;
         }
 
         .hero p {
-            font-size: 1.35rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-gray);
-            margin-bottom: 50px;
-            max-width: 750px;
-            line-height: 1.75;
+            margin-bottom: 40px;
+            max-width: 850px;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
         .hero-bg-graphic {
@@ -465,8 +468,10 @@
 
         .hero-buttons {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
+            align-items: center;
+            margin-top: 10px;
         }
 
         /* --- TRUST BADGES --- */
@@ -526,7 +531,7 @@
         }
         .section-header p { 
             color: var(--text-gray); 
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .section-header h2 .accent-text {
@@ -576,13 +581,11 @@
             font-size: 1.4rem; 
             font-weight: 700;
         }
-        .feature-card p { 
-            color: var(--text-gray); 
-            font-size: 1rem; 
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
             line-height: 1.7;
-        }
-
-        /* --- ARCHITECTURE SECTION --- */
+        }        /* --- ARCHITECTURE SECTION --- */
         .architecture {
             position: relative;
             overflow: hidden;
@@ -805,7 +808,7 @@
         }
 
         .demo-text p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             line-height: 1.8;
             margin-bottom: 20px;
             color: var(--text-gray);
@@ -1141,7 +1144,7 @@
         /* --- MOBILE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
-            .hero p { font-size: 1.1rem; }
+            .hero p { font-size: 0.95rem; }
             .demo-section { flex-direction: column; gap: 40px; }
             .arch-diagram { flex-direction: column; }
             .connector-line { width: 2px; height: 40px; }
@@ -1404,10 +1407,6 @@
                 left: 20px;
             }
 
-            .logo-img {
-                height: 55px;
-            }
-
             .nav-links {
                 display: flex;
                 position: fixed;
@@ -1465,31 +1464,38 @@
 
             /* Hero Section */
             .hero {
-                padding-top: 140px;
+                padding-top: 120px;
                 min-height: auto;
                 padding-bottom: 60px;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
-                line-height: 1.2;
-                margin-bottom: 20px;
+                font-size: 2.2rem;
+                line-height: 1.3;
+                margin-bottom: 25px;
+                letter-spacing: -0.5px;
             }
 
             .hero p {
-                font-size: 1.1rem;
-                margin-bottom: 30px;
+                font-size: 1.05rem;
+                margin-bottom: 35px;
+                line-height: 1.7;
             }
 
             .hero-buttons {
+                display: flex;
                 flex-direction: column;
                 gap: 15px;
                 width: 100%;
+                align-items: stretch;
             }
 
             .hero-buttons .btn {
                 width: 100%;
+                max-width: 100%;
                 text-align: center;
+                padding: 16px 24px;
+                font-size: 1rem;
             }
 
             /* Sections */
@@ -1656,12 +1662,26 @@
                 height: 45px;
             }
 
+            .hero {
+                padding-top: 100px;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.3;
+                margin-bottom: 20px;
+                letter-spacing: -0.3px;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons .btn {
+                padding: 14px 20px;
+                font-size: 0.95rem;
             }
 
             .section-header h2 {
@@ -1698,19 +1718,14 @@
     <header id="mainHeader">
         <div class="nav-wrapper">
             <a href="index.html" class="logo" id="logoToggle">
-                <img src="modexia logo.png" alt="Modexia Logo" class="logo-img">
+                <img src="modylogo.png" alt="Modexia Logo" class="logo-img">
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="platform.html">Platform</a></li>
-                <li><a href="technology.html">Technology</a></li>
-                <li><a href="solutions.html">Solutions</a></li>
-                <li><a href="enterprise.html">Enterprise</a></li>
-                <li><a href="company.html">Company</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#platform">Platform</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="documentation.html">Documentation</a></li>
             </ul>
-            <div class="nav-cta nav-cta-desktop">
-                <a href="contact.html" class="btn"><span>Get Started</span></a>
-            </div>
         </div>
     </header>
 
@@ -1718,11 +1733,18 @@
     <section class="hero">
         <div class="hero-bg-graphic"></div>
         <div class="container hero-content fade-in-up">
-            <h1>The Intelligent Orchestration Engine<br><span class="text-gradient">For Modern Enterprise.</span></h1>
-            <p>Modexia transforms natural language requests into executed business actions. One intelligent workflow connecting your communication channels to your core operational systems—with human oversight at every critical decision.</p>
+            <h1>
+               
+                <span class="text-gradient">Pay AI APIs per request — in USDC.</span>
+            </h1>
+            <p>
+                Modexia enables AI agents and applications to access over 100 leading AI models, including OpenAI, Anthropic, and Google, through instant USDC-based payments. With intelligent routing, built-in budget controls, and full cost transparency, there are no API keys to manage.
+            </p>
+
+
             <div class="hero-buttons">
-                <a href="#demo" class="btn btn-primary">See How It Works</a>
-                <a href="#architecture" class="btn btn-outline">Get Started</a>
+                <button class="btn btn-primary">Get Started</button>
+                <a href="#contact" class="btn btn-outline">Book a Demo</a>
             </div>
         </div>
     </section>
@@ -1731,105 +1753,25 @@
     <section class="section-padding features" id="platform">
         <div class="container">
             <div class="section-header">
-                <h2>Enterprise Orchestration. <span class="accent-text">Intelligent by Design.</span></h2>
-                <p>Bridging unstructured communication and structured business systems • Human-in-the-Loop framework</p>
+                <h2>Autonomous API Access. <span class="accent-text">Intelligent by Design.</span></h2>
+                <p>AI agents make paid API calls autonomously • Instant USDC payments • Complete cost control</p>
             </div>
             
             <div class="grid-3">
                 <div class="feature-card">
-                    <i class="fa-solid fa-microchip feature-icon"></i>
-                    <h3>MAI Engine: Your Central Nervous System</h3>
-                    <p>Our proprietary orchestration core transforms natural language requests into executed actions across your operational systems. Acts as a single source of truth, coordinating workflows across platforms.</p>
+                    <i class="fa-solid fa-key feature-icon"></i>
+                    <h3>One API Key. 100+ Models.</h3>
+                    <p>Access OpenAI, Anthropic, Google, and 100+ AI models through a single unified API. No juggling multiple credentials, billing accounts, or integration headaches. One key, unlimited possibilities.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-user-check feature-icon"></i>
-                    <h3>Human-in-the-Loop Framework</h3>
-                    <p>AI creates data-backed "Proposal Cards" for critical decisions. Every action is verified against your budget and policy before execution. Role-Based Access Control ensures operational integrity.</p>
+                    <i class="fa-solid fa-bolt feature-icon"></i>
+                    <h3>Autonomous Payment Execution</h3>
+                    <p>AI agents execute USDC payments instantly per request. No manual approvals, no delays, no friction. Your agents operate independently while you maintain full budget control and oversight.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-layer-group feature-icon"></i>
-                    <h3>Headless Architecture</h3>
-                    <p>Intelligence decoupled from interface. Work across various platforms and devices while maintaining a single source of truth. One orchestration engine, infinite touchpoints.</p>
-                </div>
-            </div>
-
-            <!-- TRUST BADGES -->
-            <div style="margin-top: 80px; text-align: center;">
-                <div style="display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap;">
-                    <span style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Enterprise-Grade Governance</span>
-                    <span style="color: var(--accent); font-size: 1.5rem;">•</span>
-                    <span style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Powered by IBM watsonx™</span>
-                    <span style="color: var(--accent); font-size: 1.5rem;">•</span>
-                    <span style="font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Built for Dynamic Markets</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ARCHITECTURE VISUALIZATION -->
-    <section class="section-padding architecture" id="architecture">
-        <div class="container">
-            <div class="section-header">
-                <h2>The <span class="text-gradient">MAI Engine</span> in Action</h2>
-                <p>From natural language to executed business action—with human oversight at every step</p>
-            </div>
-
-            <div class="arch-diagram">
-                <!-- Input Node -->
-                <div class="arch-node">
-                    <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 10px;">
-                        <i class="fa-solid fa-comments"></i>
-                        <i class="fa-solid fa-envelope"></i>
-                        <i class="fa-solid fa-mobile-screen"></i>
-                    </div>
-                    <strong>Natural Language Input</strong>
-                    <small>Email, Chat, Voice, SMS</small>
-                </div>
-                
-                <div class="connector-line"></div>
-                
-                <!-- The Core MAI Engine -->
-                <div class="arch-node arch-center">
-                    <i class="fa-solid fa-microchip"></i>
-                    <strong>MAI ENGINE</strong>
-                    <small>Orchestration • Verification • RBAC</small>
-                </div>
-                
-                <div class="connector-line"></div>
-                
-                <!-- Execution Node -->
-                <div class="arch-node">
-                    <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 10px;">
-                        <i class="fa-solid fa-check-circle"></i>
-                        <i class="fa-solid fa-database"></i>
-                        <i class="fa-solid fa-cogs"></i>
-                    </div>
-                    <strong>Verified Execution</strong>
-                    <small>ERP, CRM, Financial Systems</small>
-                </div>
-            </div>
-
-            <!-- Process Steps -->
-            <div style="margin-top: 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-                <div style="text-align: center; padding: 30px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border: 1px solid rgba(14, 165, 233, 0.15); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(30, 41, 59, 0.5)'; this.style.borderColor='rgba(14, 165, 233, 0.4)';" onmouseout="this.style.background='rgba(30, 41, 59, 0.3)'; this.style.borderColor='rgba(14, 165, 233, 0.15)';">
-                    <div style="font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 15px;">01</div>
-                    <h4 style="margin-bottom: 10px; color: var(--text-light);">Intent Recognition</h4>
-                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">AI extracts meaning from unstructured communication across any channel</p>
-                </div>
-                <div style="text-align: center; padding: 30px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border: 1px solid rgba(14, 165, 233, 0.15); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(30, 41, 59, 0.5)'; this.style.borderColor='rgba(14, 165, 233, 0.4)';" onmouseout="this.style.background='rgba(30, 41, 59, 0.3)'; this.style.borderColor='rgba(14, 165, 233, 0.15)';">
-                    <div style="font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 15px;">02</div>
-                    <h4 style="margin-bottom: 10px; color: var(--text-light);">Data Orchestration</h4>
-                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">Query multiple systems, verify budget, check policy compliance</p>
-                </div>
-                <div style="text-align: center; padding: 30px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border: 1px solid rgba(14, 165, 233, 0.15); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(30, 41, 59, 0.5)'; this.style.borderColor='rgba(14, 165, 233, 0.4)';" onmouseout="this.style.background='rgba(30, 41, 59, 0.3)'; this.style.borderColor='rgba(14, 165, 233, 0.15)';">
-                    <div style="font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 15px;">03</div>
-                    <h4 style="margin-bottom: 10px; color: var(--text-light);">Human Verification</h4>
-                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">Present Proposal Cards to authorized users for final approval</p>
-                </div>
-                <div style="text-align: center; padding: 30px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border: 1px solid rgba(14, 165, 233, 0.15); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(30, 41, 59, 0.5)'; this.style.borderColor='rgba(14, 165, 233, 0.4)';" onmouseout="this.style.background='rgba(30, 41, 59, 0.3)'; this.style.borderColor='rgba(14, 165, 233, 0.15)';">
-                    <div style="font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 15px;">04</div>
-                    <h4 style="margin-bottom: 10px; color: var(--text-light);">Secure Execution</h4>
-                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;">Execute approved actions across operational systems with full audit trail</p>
+                    <i class="fa-solid fa-chart-line feature-icon"></i>
+                    <h3>Real-Time Cost Transparency</h3>
+                    <p>See exactly what you're spending before every API call. Dynamic pricing estimates, budget tracking, and cost variance detection. No surprises, no hidden fees, complete financial visibility.</p>
                 </div>
             </div>
         </div>
@@ -1839,43 +1781,42 @@
     <section class="section-padding demo-section" id="solutions">
         <div class="container" style="display: flex; align-items: center; gap: 80px; flex-wrap: wrap;">
             <div class="demo-text">
-                <h2>Proposal Cards: Intelligence Meets Human Judgment</h2>
-                <p><strong>The orchestration in action:</strong> A supplier emails an invoice. Instead of manual verification across multiple systems, the MAI Engine orchestrates the entire workflow.</p>
-                <p>Modexia extracts the request, queries your operational databases, verifies against budget and policy, then generates a data-backed Proposal Card. Every critical decision surfaces to the right person with complete context.</p>
+                <h2>Autonomous Decisions: AI Agents in Action</h2>
+                <p>Your AI agent needs to call GPT-4. Instead of managing API keys, checking budgets, or processing payments manually, Modexia handles everything instantly.</p>
+                <p>Every request is evaluated for cost, risk, and policy compliance. High-value or unusual requests get extra scrutiny. Low-risk calls are approved instantly. You stay in control with real-time visibility and budget limits.</p>
                 <ul style="margin-top: 30px; color: var(--text-gray);">
-                    <li><strong>Natural language processing</strong> extracts intent from unstructured input</li>
-                    <li><strong>Cross-system verification</strong> checks budget, policy, and authorization</li>
-                    <li><strong>Human-in-the-Loop approval</strong> ensures operational integrity</li>
+                    <li><strong>Smart routing</strong> — Fast-track simple requests, thorough review for complex ones</li>
+                    <li><strong>Risk detection</strong> — Automatically flags cost spikes and unusual patterns</li>
+                    <li><strong>Instant execution</strong> — Approved requests are paid in USDC and executed immediately</li>
                 </ul>
             </div>
             
             <div class="demo-ui">
                 <!-- Simulated Chat UI -->
                 <div class="ui-status">
-                    🟢 MODEXIA AGENT • ACTIVE
+                    🟢 EVALUATING REQUEST
                 </div>
                 
                 <!-- Message -->
                 <div class="ui-message">
-                    <p style="font-size: 0.95rem;">I've orchestrated a verification workflow for the incoming invoice from <strong>Global Logistics Ltd</strong>. All systems checked: PO match confirmed, budget validated, authorization verified. Proposal Card ready for your decision.</p>
+                    <p style="font-size: 0.95rem;">Your agent <strong>trading_bot_v2</strong> wants to call GPT-4 for analysis.</p>
                 </div>
 
-                <!-- The Proposal Card -->
+                <!-- The Decision Card -->
                 <div class="ui-card">
                     <div class="ui-header">
-                        <span>💡 Recommendation</span>
-                        <span style="color: var(--success);">Confidence: 98%</span>
+                        <span>📊 Request Review</span>
+                        <span style="color: #fbbf24;">⚠️ Needs Approval</span>
                     </div>
                     <div class="ui-body">
-                        <strong>Action:</strong> Process Payment<br>
-                        <strong>Vendor:</strong> Global Logistics Ltd<br>
-                        <strong>Amount:</strong> $4,500.00<br>
-                        <strong>Budget Code:</strong> OPS-2025-Q1<br>
-                        <strong>PO Match:</strong> ✓ Verified<br>
-                        <small style="color: #ef4444; margin-top: 10px; display: block;"><i class="fa-solid fa-circle-exclamation"></i> Note: 5% higher than last month's invoice</small>
+                        <strong>Model:</strong> OpenAI GPT-4<br>
+                        <strong>Estimated Cost:</strong> $2.50 USDC<br>
+                        <strong>Risk Level:</strong> Medium<br>
+                        <strong>Reason:</strong> Cost is 3× your average<br>
+                        <small style="color: #fbbf24; margin-top: 10px; display: block;"><i class="fa-solid fa-triangle-exclamation"></i> Unusual spending pattern detected</small>
                     </div>
                     <div class="ui-buttons">
-                        <button class="ui-btn btn-reject">Reject</button>
+                        <button class="ui-btn btn-reject">Decline</button>
                         <button class="ui-btn btn-approve">Approve & Pay</button>
                     </div>
                 </div>
@@ -1887,110 +1828,45 @@
     <section class="section-padding security" id="governance">
         <div class="container">
             <div class="section-header">
-                <h2>Enterprise Governance Standards. Built-In.</h2>
-                <p>RBAC, audit trails, and operational integrity powered by IBM watsonx™</p>
+                <h2>You Stay in Control</h2>
+                <p>Set spending limits, monitor every transaction, and let the system handle the rest</p>
             </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
                 <!-- Left Side: Text -->
                 <div>
                     <div class="security-item" style="margin-bottom: 40px;">
-                        <h4 class="accent-text" style="margin-bottom: 12px;">Multi-Tenant Isolation</h4>
-                        <p>Physical data separation. Your data lives in its own secure vault, completely isolated from other organizations.</p>
+                        <h4 class="accent-text" style="margin-bottom: 12px;">Set Your Limits</h4>
+                        <p>Define daily, monthly, or per-request spending caps. Your agents can't exceed them. No surprises, no overspending.</p>
                     </div>
                     <div class="security-item" style="margin-bottom: 40px;">
-                        <h4 class="accent-text" style="margin-bottom: 12px;">PII Redaction</h4>
-                        <p>Tokenizing credit cards/IDs before processing. Sensitive information is masked and replaced with secure tokens.</p>
+                        <h4 class="accent-text" style="margin-bottom: 12px;">Automatic Alerts</h4>
+                        <p>Get notified when something unusual happens. Cost spikes, new patterns, or suspicious activity—you'll know immediately.</p>
                     </div>
                     <div class="security-item">
-                        <h4 class="accent-text" style="margin-bottom: 12px;">Audit Trails</h4>
-                        <p>Immutable logs for compliance. Every action is recorded and cannot be modified, ensuring complete accountability.</p>
+                        <h4 class="accent-text" style="margin-bottom: 12px;">Complete Transparency</h4>
+                        <p>Every request, decision, and payment is logged. Review your spending history anytime, with full details on what happened and why.</p>
                     </div>
                 </div>
                 
                 <!-- Right Side: Terminal Visual -->
                 <div style="background: #020617; border: 1px solid rgba(14, 165, 233, 0.25); border-radius: 20px; padding: 35px; font-family: 'Courier New', monospace; font-size: 0.9rem;">
-                    <div style="color: #94a3b8; margin-bottom: 25px; border-bottom: 1px solid rgba(14, 165, 233, 0.2); padding-bottom: 15px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">RBAC Security Log</div>
+                    <div style="color: #94a3b8; margin-bottom: 25px; border-bottom: 1px solid rgba(14, 165, 233, 0.2); padding-bottom: 15px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Activity Log</div>
                     
                     <div style="margin-bottom: 20px;">
-                        <div style="color: #9ca3af; margin-bottom: 5px;">[2025-12-02 14:23:11] User: intern_sarah</div>
-                        <div style="color: #9ca3af; margin-bottom: 5px;">Action: VIEW_FINANCIAL_REPORTS</div>
-                        <div style="color: #ef4444; font-weight: 700;">Status: ❌ DENIED</div>
-                        <div style="color: #9ca3af; font-size: 0.75rem; margin-top: 5px;">Reason: Insufficient permissions (Role: Intern)</div>
+                        <div style="color: #9ca3af; margin-bottom: 5px;">[12:00:02] trading_bot • GPT-3.5</div>
+                        <div style="color: #9ca3af; margin-bottom: 5px;">Cost: $0.002 USDC</div>
+                        <div style="color: #10b981; font-weight: 700;">✓ Approved & Paid</div>
+                        <div style="color: #9ca3af; font-size: 0.75rem; margin-top: 5px;">Completed in 1.2s</div>
                     </div>
                     
                     <div style="height: 1px; background: rgba(99, 102, 241, 0.2); margin: 20px 0;"></div>
                     
                     <div>
-                        <div style="color: #9ca3af; margin-bottom: 5px;">[2025-12-02 14:23:45] User: cfo_michael</div>
-                        <div style="color: #9ca3af; margin-bottom: 5px;">Action: APPROVE_PAYMENT_$45000</div>
-                        <div style="color: #10b981; font-weight: 700;">Status: ✓ ALLOWED</div>
-                        <div style="color: #9ca3af; font-size: 0.75rem; margin-top: 5px;">Reason: Valid permissions (Role: CFO)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- IBM TECHNOLOGY SECTION -->
-    <section class="ibm-tech-section">
-        <div class="container">
-            <div class="ibm-content-wrapper">
-                <!-- Text Side -->
-                <div class="ibm-text-side">
-                    <h2>
-                        Built on <br>
-                        <span style="color: #4d9dd8;">IBM Technology</span>
-                    </h2>
-                    <p>
-                        Modexia is powered by IBM watsonx™, combining cutting-edge AI capabilities with enterprise-grade security and reliability. We leverage IBM's proven infrastructure to deliver intelligent orchestration that scales with your business.
-                    </p>
-                    
-                    <div class="ibm-features">
-                        <div class="ibm-feature-item">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <div>
-                                <strong style="color: var(--text-light); display: block; margin-bottom: 5px;">Enterprise Security</strong>
-                                <span style="color: var(--text-gray); font-size: 0.95rem;">Bank-level encryption and compliance standards</span>
-                            </div>
-                        </div>
-                        <div class="ibm-feature-item">
-                            <i class="fa-solid fa-brain"></i>
-                            <div>
-                                <strong style="color: var(--text-light); display: block; margin-bottom: 5px;">Advanced AI Models</strong>
-                                <span style="color: var(--text-gray); font-size: 0.95rem;">Powered by IBM watsonx™ foundation models</span>
-                            </div>
-                        </div>
-                        <div class="ibm-feature-item">
-                            <i class="fa-solid fa-chart-line"></i>
-                            <div>
-                                <strong style="color: var(--text-light); display: block; margin-bottom: 5px;">Proven Scalability</strong>
-                                <span style="color: var(--text-gray); font-size: 0.95rem;">Infrastructure trusted by Fortune 500 companies</span>
-                            </div>
-                        </div>
-                        <div class="ibm-feature-item">
-                            <i class="fa-solid fa-handshake"></i>
-                            <div>
-                                <strong style="color: var(--text-light); display: block; margin-bottom: 5px;">IBM Partner Plus</strong>
-                                <span style="color: var(--text-gray); font-size: 0.95rem;">Official IBM partner with deep technical integration</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Logo Side -->
-                <div class="ibm-logo-side">
-                    <div class="ibm-logo-container">
-                        <div class="ibm-logo-bg"></div>
-                        <div class="ibm-particles">
-                            <div class="ibm-particle"></div>
-                            <div class="ibm-particle"></div>
-                            <div class="ibm-particle"></div>
-                            <div class="ibm-particle"></div>
-                            <div class="ibm-particle"></div>
-                            <div class="ibm-particle"></div>
-                        </div>
-                        <div style="position: relative; z-index: 2; font-size: 10rem; font-weight: 900; font-family: 'Helvetica', 'Arial', sans-serif; color: #4d9dd8; letter-spacing: 0.15em; text-shadow: 0 0 40px rgba(77, 157, 216, 0.8), 0 0 80px rgba(77, 157, 216, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5); animation: float 6s ease-in-out infinite; -webkit-text-stroke: 2px rgba(77, 157, 216, 0.3); background: linear-gradient(180deg, #5ba3d8 0%, #4d9dd8 50%, #3d8dc8 100%); -webkit-background-clip: text; background-clip: text;">IBM</div>
+                        <div style="color: #9ca3af; margin-bottom: 5px;">[12:00:04] trading_bot • GPT-4</div>
+                        <div style="color: #9ca3af; margin-bottom: 5px;">Cost: $2.50 USDC</div>
+                        <div style="color: #fbbf24; font-weight: 700;">⚠ Needs Your Approval</div>
+                        <div style="color: #9ca3af; font-size: 0.75rem; margin-top: 5px;">Flagged: Unusual spending</div>
                     </div>
                 </div>
             </div>
@@ -2001,14 +1877,14 @@
     <section class="section-padding" style="background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 70%);">
         <div class="container" style="text-align: center;">
             <h2 style="font-size: 3rem; margin-bottom: 25px; font-weight: 800; font-family: 'Rajdhani', sans-serif;">
-                Unify Your Operations. Maintain Control.
+                Ready to Get Started?
             </h2>
             <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Experience intelligent orchestration that bridges communication and execution—with human judgment at the center of every critical decision.
+                Let your AI agents work independently while you stay in control. Simple setup, transparent pricing, no surprises.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="#contact" class="btn btn-primary" style="padding: 18px 48px; font-size: 1.1rem;">Request a Demo</a>
-                <a href="#whitepaper" class="btn btn-outline" style="padding: 18px 48px; font-size: 1.1rem;">Download Whitepaper</a>
+                <a href="#contact" class="btn btn-primary" style="padding: 18px 48px; font-size: 1.1rem;">Get Started Free</a>
+                <a href="#contact" class="btn btn-outline" style="padding: 18px 48px; font-size: 1.1rem;">Talk to Us</a>
             </div>
         </div>
     </section>
@@ -2017,42 +1893,38 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="modexia logo.png" alt="Modexia Logo" style="height: 50px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4));">
-                    <p>The intelligent orchestration engine for enterprise operations. Unifying communication and execution with human oversight.</p>
-                </div>
+            
                 <div class="footer-col">
-                    <h4>Platform</h4>
+                    <h4>Product</h4>
                     <ul>
-                        <li><a href="#">The MAI Engine</a></li>
-                        <li><a href="#">Universal Adapters</a></li>
-                        <li><a href="#">Proposal Cards</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">API Docs</a></li>
+                        <li><a href="#">Supported Models</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">About</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Investors</h4>
+                    <h4>Resources</h4>
                     <ul>
-                        <li><a href="#">Investment Overview</a></li>
-                        <li><a href="#">Financial Reports</a></li>
-                        <li><a href="#">Governance</a></li>
-                        <li><a href="#">Contact IR</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Changelog</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                © 2025 Modexia Inc. All Rights Reserved. Built on IBM Technology. • <a href="#" style="color: #64748b; text-decoration: underline;">Privacy Policy</a> • <a href="#" style="color: #64748b; text-decoration: underline;">Terms of Service</a>
+                <img src="modylogo.png" alt="Modexia Logo" style="height: 30px; width: auto; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.4));">
+                <p style="margin: 0;">© 2026 Modexia. All Rights Reserved. • <a href="#" style="color: #64748b; text-decoration: underline;">Privacy</a> • <a href="#" style="color: #64748b; text-decoration: underline;">Terms</a></p>
             </div>
         </div>
     </footer>
