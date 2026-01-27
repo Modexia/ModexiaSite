@@ -1775,7 +1775,7 @@
 
 
             <div class="hero-buttons">
-                <button class="btn btn-primary">Get Started</button>
+                <a href="#waitlist" class="btn btn-primary">Get Started</a>
                 <a href="#contact" class="btn btn-outline">Book a Demo</a>
             </div>
         </div>
@@ -1915,8 +1915,36 @@
                 Let your AI agents work independently while you stay in control. Simple setup, transparent pricing, no surprises.
             </p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#contact" class="btn btn-primary" style="padding: 18px 36px; font-size: 1rem;">Get Started Free</a>
+                <a href="#waitlist" class="btn btn-primary" style="padding: 18px 36px; font-size: 1rem;">Get Started Free</a>
                 <a href="#contact" class="btn btn-outline" style="padding: 18px 36px; font-size: 1rem;">Talk to Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAITLIST SECTION -->
+    <section class="section-padding" id="waitlist" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(2, 132, 199, 0.05) 100%);">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 25px; font-weight: 800; font-family: 'Rajdhani', sans-serif;">
+                Join the Waitlist
+            </h2>
+            <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Be among the first to experience autonomous AI API access with USDC payments. Get early access and exclusive benefits.
+            </p>
+            <div style="max-width: 500px; margin: 0 auto;">
+                <form id="waitlistForm" style="display: flex; flex-direction: column; gap: 20px;">
+                    <input type="email" id="waitlistEmail" placeholder="Enter your email" required 
+                           style="padding: 18px 24px; font-size: 1rem; border: 2px solid rgba(14, 165, 233, 0.3); 
+                                  border-radius: 12px; background: rgba(30, 41, 59, 0.6); color: white; 
+                                  transition: border-color 0.3s;">
+                    <input type="text" id="waitlistName" placeholder="Your name (optional)" 
+                           style="padding: 18px 24px; font-size: 1rem; border: 2px solid rgba(14, 165, 233, 0.3); 
+                                  border-radius: 12px; background: rgba(30, 41, 59, 0.6); color: white; 
+                                  transition: border-color 0.3s;">
+                    <button type="submit" class="btn btn-primary" style="padding: 18px 36px; font-size: 1rem; width: 100%;">
+                        Join Waitlist
+                    </button>
+                </form>
+                <p id="waitlistMessage" style="margin-top: 20px; font-size: 0.9rem; display: none;"></p>
             </div>
         </div>
     </section>
@@ -2072,6 +2100,44 @@
                 }
             });
         });
+
+        // Waitlist form submission
+        const waitlistForm = document.getElementById('waitlistForm');
+        const waitlistMessage = document.getElementById('waitlistMessage');
+        
+        if (waitlistForm) {
+            waitlistForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('waitlistEmail').value;
+                const name = document.getElementById('waitlistName').value;
+                
+                // Store in localStorage (you can replace this with actual backend integration)
+                const waitlistData = {
+                    email: email,
+                    name: name,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Get existing waitlist or create new one
+                let waitlist = JSON.parse(localStorage.getItem('modexiaWaitlist') || '[]');
+                waitlist.push(waitlistData);
+                localStorage.setItem('modexiaWaitlist', JSON.stringify(waitlist));
+                
+                // Show success message
+                waitlistMessage.textContent = 'Thanks for joining! We\'ll be in touch soon.';
+                waitlistMessage.style.color = 'var(--success)';
+                waitlistMessage.style.display = 'block';
+                
+                // Reset form
+                waitlistForm.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    waitlistMessage.style.display = 'none';
+                }, 5000);
+            });
+        }
     </script>
 
 </body>
